@@ -1,0 +1,40 @@
+﻿@model Brand
+<!-- Page Heading -->
+<h1 class="h3 mb-2 text-gray-800">@Model.Name</h1>
+
+<!-- DataTales Example -->
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">@Model.Name Products</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Image</th>
+                        <th>Name</th>
+                        <th>Count</th>
+                        <th>Price</th>
+                        <th>Created At</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (Product product in Model.Products)
+                    {
+                        <tr>
+                            <td>@product.Id</td>
+                            <td>
+                                <img width="100" height="100" src="~/assets/images/product/@product.MainImage" alt="@product.Name" />
+                            <td>@product.Name</td>
+                            <th>@product.Count</th>
+                            <th>@(product.DiscountPrice > 0 ? product.DiscountPrice : product.Price)</th>
+                            <td>@product.CreateDate.ToShortDateString()</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

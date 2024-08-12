@@ -1,0 +1,312 @@
+﻿@model Product
+
+
+<!--====== Single Product Part Start ======-->
+
+<section class="single-product-page pt-20">
+    <div class="container-fluid custom-container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="single-product-image mt-30">
+                    <div class="product-single-image">
+                        @foreach (ProductImage productImage in Model.ProductImages)
+                        {
+                            <div class="single-image">
+                                <img src="~/assets/images/product/@productImage.Image" alt="@Model.Name">
+                            </div>
+                        }
+                    </div>
+                    <div class="product-single-thumb-image">
+                        <ul class="product-single-thumb">
+                            @foreach (ProductImage productImage in Model.ProductImages)
+                            {
+                                <li><img src="~/assets/images/product/@productImage.Image" alt="@Model.Name"></li>
+                            }
+                        </ul>
+                    </div>
+                </div> <!-- single product image -->
+            </div>
+            <div class="col-lg-6">
+                <div class="single-product-content mt-30">
+                    <div class="tags d-flex">
+                        <span class="tag-title">Tags:</span>
+                        <ul class="tag-list media-body">
+                            @foreach (var productTag in Model.ProductTags)
+                            {
+                                <li><a href="#">@productTag.Tag.Name</a></li>
+                            }
+                        </ul>
+                    </div>
+                    <h2 class="product-title">@Model.Name</h2>
+                    <div class="review-rating d-flex flex-wrap">
+                        <ul class="rating">
+                            <li class="rating-on"><i class="fas fa-star"></i></li>
+                            <li class="rating-on"><i class="fas fa-star"></i></li>
+                            <li class="rating-on"><i class="fas fa-star"></i></li>
+                            <li class="rating-on"><i class="fas fa-star"></i></li>
+                            <li class="rating-on"><i class="fas fa-star"></i></li>
+                        </ul>
+                        <ul class="review-link">
+                            <li><a href="#">(1 Review)</a></li>
+                            <li><a href="#">Write A Review</a></li>
+                        </ul>
+                    </div>
+                    <div class="product-price">
+                        @if (Model.DiscountPrice > 0)
+                        {
+                            <span class="price-sale">€@Model.Price</span>
+                            <span class="regular-price">€@Model.DiscountPrice</span>
+                        }
+                        else
+                        {
+                            <span class="regular-price">€@Model.DiscountPrice</span>
+
+                        }
+                    </div>
+                    <div class="product-basic-info">
+                        <div class="single-info">
+                            <span class="title">Ex Tax :</span>
+                            <span class="value">€@Model.ExTax</span>
+                        </div>
+                        <div class="single-info">
+                            <span class="title">Brand :</span>
+                            <span class="value"><a href="#">@Model.Brand.Name</a></span>
+                        </div>
+                        <div class="single-info">
+                            <span class="title"> Product Code :</span>
+                            <span class="value">@Model.Code@Model.Seria</span>
+                        </div>
+                        <div class="single-info">
+                            <span class="title"> Availability :</span>
+                            <span class="value">@(Model.Count > 0 ? "In stock" : "Out of stock")</span>
+                        </div>
+                    </div>
+                    <p>@Model.Description</p>
+                    <div class="product-size-color-quantity">
+                        <div class="product-quantity mt-25">
+                            <h5 class="title">Quantity</h5>
+                            <div class="quantity mt-15 d-flex">
+                                <button type="button" class="sub"><i class="fal fa-minus"></i></button>
+                                <input type="text" value="1" />
+                                <button type="button" class="add"><i class="fal fa-plus"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="addcart">
+                        <button><i class="icon ion-bag"></i> Add to cart</button>
+                    </div>
+                    <div class="product-wishlist-compare">
+                        <ul class="d-flex flex-wrap">
+                            <li><a href="#"><i class="fal fa-heart"></i> Add to wishlist</a></li>
+                            <li><a href="#"><i class="fal fa-repeat"></i> Add to compare</a></li>
+                        </ul>
+                    </div>
+                    <div class="product-share d-flex">
+                        <p>Share</p>
+                        <ul class="social media-body">
+                            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fab fa-google"></i></a></li>
+                            <li><a href="#"><i class="fab fa-pinterest-p"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="reassurance-block">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="single-reassurance d-flex">
+                                    <div class="reassurance-icon">
+                                        <img src="~/assets/images/icon-1.png" alt="icon">
+                                    </div>
+                                    <div class="reassurance media-body">
+                                        <p>Security policy (edit with Customer reassurance module)</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="single-reassurance d-flex">
+                                    <div class="reassurance-icon">
+                                        <img src="~/assets/images/icon-2.png" alt="icon">
+                                    </div>
+                                    <div class="reassurance media-body">
+                                        <p>Delivery policy (edit with Customer reassurance module)</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="single-reassurance d-flex">
+                                    <div class="reassurance-icon">
+                                        <img src="~/assets/images/icon-3.png" alt="icon">
+                                    </div>
+                                    <div class="reassurance media-body">
+                                        <p>Return policy (edit with Customer reassurance module)</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- single product content -->
+            </div>
+        </div> <!-- row -->
+    </div> <!-- container -->
+</section>
+
+<!--====== Single Product Part Ends ======-->
+<!--====== Product Description Part Start ======-->
+
+<section class="product-description-area pt-50">
+    <div class="container-fluid custom-container">
+        <ul class="nav justify-content-center" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <a class="active" id="description-tab" data-toggle="tab" href="#description" role="tab" aria-controls="description" aria-selected="true">Description</a>
+            </li>
+            <li class="nav-item" role="presentation">
+                <a id="review-tab" data-toggle="tab" href="#review" role="tab" aria-controls="review" aria-selected="false">Review</a>
+            </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="description" role="tabpanel" aria-labelledby="description-tab">
+                <div class="description">
+                    <p>@Model.Description</p>
+                </div> <!-- Description -->
+            </div>
+            <div class="tab-pane fade" id="review" role="tabpanel" aria-labelledby="review-tab">
+                <div class="product-rating-content">
+                    <div class="average-rating">
+                        <h4 class="rating-overall">4.5 <span>(Overall)</span></h4>
+                        <p>Based on 9 Comments</p>
+                    </div>
+                    <div class="rating-list d-flex flex-wrap">
+                        <div class="single-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span>(5)</span>
+                        </div>
+                        <div class="single-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <span>(3)</span>
+                        </div>
+                        <div class="single-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <span>(1)</span>
+                        </div>
+                        <div class="single-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <span>(0)</span>
+                        </div>
+                        <div class="single-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <span>(0)</span>
+                        </div>
+                    </div>
+                    <div class="rating-items">
+                        <div class="single-rating-item">
+                            <div class="rating-author d-flex flex-wrap">
+                                <h4 class="author-name">Cristopher Lee</h4>
+                                <ul class="rating-star">
+                                    <li><i class="fas fa-star"></i></li>
+                                    <li><i class="fas fa-star"></i></li>
+                                    <li><i class="fas fa-star"></i></li>
+                                    <li><i class="fas fa-star"></i></li>
+                                    <li><i class="fas fa-star"></i></li>
+                                    <li><span>(5)</span></li>
+                                </ul>
+                            </div>
+                            <p>enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia res eos qui ratione voluptatem sequi Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci veli enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia res eos qui ratione voluptatem sequi Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci veli</p>
+                        </div>
+                        <div class="single-rating-item">
+                            <div class="rating-author d-flex flex-wrap">
+                                <h4 class="author-name">Hasan Mubarak</h4>
+                                <ul class="rating-star">
+                                    <li><i class="fas fa-star"></i></li>
+                                    <li><i class="fas fa-star"></i></li>
+                                    <li><i class="fas fa-star"></i></li>
+                                    <li><i class="fas fa-star"></i></li>
+                                    <li><i class="fas fa-star"></i></li>
+                                    <li><span>(5)</span></li>
+                                </ul>
+                            </div>
+                            <p>enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia res eos qui ratione voluptatem sequi Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci veli enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia res eos qui ratione voluptatem sequi Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci veli</p>
+                        </div>
+                        <div class="single-rating-item">
+                            <div class="rating-author d-flex flex-wrap">
+                                <h4 class="author-name">Rashed Mahmud</h4>
+                                <ul class="rating-star">
+                                    <li><i class="fas fa-star"></i></li>
+                                    <li><i class="fas fa-star"></i></li>
+                                    <li><i class="fas fa-star"></i></li>
+                                    <li><i class="fas fa-star"></i></li>
+                                    <li><i class="fas fa-star"></i></li>
+                                    <li><span>(5)</span></li>
+                                </ul>
+                            </div>
+                            <p>enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia res eos qui ratione voluptatem sequi Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci veli enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia res eos qui ratione voluptatem sequi Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci veli</p>
+                        </div>
+                    </div>
+
+                    <div class="rating-form">
+                        <h4 class="form-title">Add your Comments</h4>
+
+                        <form action="#">
+                            <div class="rating-star d-flex">
+                                <span class="title">Rating:</span>
+                                <ul>
+                                    <li><i class="fas fa-star"></i></li>
+                                    <li><i class="fas fa-star"></i></li>
+                                    <li><i class="fas fa-star"></i></li>
+                                    <li><i class="fas fa-star"></i></li>
+                                    <li><i class="fas fa-star"></i></li>
+                                </ul>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="single-form">
+                                        <label>Name:</label>
+                                        <input type="text" placeholder="Name">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="single-form">
+                                        <label>Email:</label>
+                                        <input type="email" placeholder="Email">
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="single-form">
+                                        <label>Your Review:</label>
+                                        <textarea placeholder="Write a review"></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="single-form">
+                                        <button class="main-btn">Add Review</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div> <!-- Rating Content -->
+            </div>
+        </div> <!-- tab-content -->
+    </div> <!-- container -->
+</section>
+
+<!--====== Product Description Part Ends ======-->

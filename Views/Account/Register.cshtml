@@ -1,0 +1,46 @@
+﻿@model RegisterVM
+<section class="register-area pt-10">
+    <div class="container-fluid custom-container">
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <div class="login-register-wrapper mt-30">
+                    <h4 class="allup-title">Creat New Account</h4>
+                    <p class="mt-10">Already have an account? <a asp-action="login">Log in instead!</a></p>
+                    <div class="text-danger">
+                        @Html.ValidationSummary()
+                    </div>
+                    <form method="post">
+                        <div class="single-form">
+                            <label asp-for="@Model.Fullname"></label>
+                            <input asp-for="@Model.Fullname" placeholder="First Name">
+                            <span class="text-danger" asp-validation-for="@Model.Fullname"></span>
+                        </div>
+                        <div class="single-form">
+                            <label asp-for="@Model.Email"></label>
+                            <input asp-for="@Model.Email" placeholder="Email">
+                            <span class="text-danger" asp-validation-for="@Model.Email"></span>
+                        </div>
+                        <div class="single-form">
+                            <label asp-for="@Model.Username"></label>
+                            <input asp-for="@Model.Username" placeholder="Username">
+                            <span class="text-danger" asp-validation-for="@Model.Username"></span>
+                        </div>
+                        <div class="single-form">
+                            <label asp-for="@Model.Password"></label>
+                            <input asp-for="@Model.Password" placeholder="Password">
+                            <span class="text-danger" asp-validation-for="@Model.Password"></span>
+                        </div>
+                        <div class="single-form">
+                            <label asp-for="@Model.RePassword"></label>
+                            <input asp-for="@Model.RePassword" placeholder="Confirm Password">
+                            <span class="text-danger" asp-validation-for="@Model.RePassword"></span>
+                        </div>
+                        <div class="single-form">
+                            <button type="submit" class="main-btn main-btn-2">Register</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

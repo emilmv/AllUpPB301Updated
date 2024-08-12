@@ -1,0 +1,43 @@
+﻿@model Category
+<form enctype="multipart/form-data" method="post">
+    <div class="form-group">
+        <label asp-for="Name"></label>
+        <input asp-for="Name" class="form-control" placeholder="Enter category name">
+        <span class="text-danger" asp-validation-for="Name"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="IsMain"></label>
+        <input asp-for="IsMain" class="form-control">
+        <span class="text-danger" asp-validation-for="IsMain"></span>
+    </div>
+    <div id="fileInput" class="form-group d-none">
+        <label asp-for="Photo"></label>
+        <input asp-for="Photo" class="form-control" accept="image/*">
+        <span class="text-danger" asp-validation-for="Photo"></span>
+    </div>
+    <div id="parentId" class="form-group">
+        <label asp-for="ParentId"></label>
+        <select asp-for="ParentId">
+            @foreach (Category category in ViewBag.Categories)
+            {
+                <option value="@category.Id">@category.Name</option>
+            }
+        </select>
+        <span class="text-danger" asp-validation-for="ParentId"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+
+<script>
+    const isMain = document.querySelector("#IsMain");
+    const fileInput = document.querySelector("#fileInput");
+    const parentId = document.querySelector("#parentId");
+    if (isMain.checked) {
+        fileInput.classList.remove("d-none");
+        parentId.classList.add("d-none");
+    } else {
+        fileInput.classList.add("d-none");
+        parentId.classList.remove("d-none");
+    }
+</script>

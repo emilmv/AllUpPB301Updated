@@ -1,0 +1,9 @@
+﻿@model IEnumerable<Product>
+
+@foreach (Product product in Model)
+{
+    <li>
+        <img width="70" height="70" src="~/assets/images/product/@product.MainImage" />
+        <a href="/product/detail/@product.Id">@product.Name</a>
+    </li>
+}

@@ -1,0 +1,37 @@
+﻿@model LoginVM
+<section class="register-area pt-10">
+    <div class="container-fluid custom-container">
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <div class="login-register-wrapper mt-30">
+                    <h4 class="allup-title">Log in to your Account</h4>
+                    <p class="mt-10">Don't have an account? <a asp-action="login">Create an account!</a></p>
+
+                    <div class="text-danger">
+                        @Html.ValidationSummary()
+                    </div>
+
+                    <form method="post">
+                        <div class="single-form">
+                            <label asp-for="@Model.UsernameOrEmail"></label>
+                            <input asp-for="@Model.UsernameOrEmail" placeholder="First Name">
+                            <span class="text-danger" asp-validation-for="@Model.UsernameOrEmail"></span>
+                        </div>
+                        <div class="single-form">
+                            <label asp-for="@Model.Password"></label>
+                            <input asp-for="@Model.Password" placeholder="Password">
+                            <span class="text-danger" asp-validation-for="@Model.Password"></span>
+                        </div>
+                        <div class="single-form">
+                            <label asp-for="@Model.RememberMe"></label>
+                            <input asp-for="@Model.RememberMe">
+                        </div>
+                        <div class="single-form">
+                            <button type="submit" class="main-btn main-btn-2">Login</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

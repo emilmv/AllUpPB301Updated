@@ -1,0 +1,44 @@
+﻿@model Product
+<!-- Page Heading -->
+<h1 class="h3 mb-2 text-gray-800">@Model.Name</h1>
+
+<!-- DataTales Example -->
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">@Model.Name</h6>
+        <h6 class="m-0">Description: @Model.Description</h6>
+        <h6 class="m-0">Count: @Model.Count</h6>
+        <h6 class="m-0">ExTax: @Model.ExTax</h6>
+        <h6 class="m-0">DiscountPrice: @Model.DiscountPrice</h6>
+        <h6 class="m-0">Price: @Model.Price</h6>
+        <h6 class="m-0">Brand: @Model.Brand.Name</h6>
+        <h6 class="m-0">Category: @Model.Category.Name</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Image</th>
+                        <th>Settings</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var productImage in Model.ProductImages)
+                    {
+                        <tr>
+                            <td>@productImage.Id</td>
+                            <td>
+                                <img width="100" height="100" src="~/assets/images/product/@productImage.Image" alt="@Model.Name" />
+                            </td>
+                            <td>
+                                <a href="/product/deleteimage/@productImage.Id" class="btn btn-danger">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,43 @@
+﻿@model IEnumerable<Category>
+<!-- Page Heading -->
+<h1 class="h3 mb-2 text-gray-800">Categories Table</h1>
+
+<a class="btn btn-primary mt-4 mb-4" href="/manage/category/create">Create a sub category</a>
+
+<!-- DataTales Example -->
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Sub Categories</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Created At</th>
+                        <th>Product Count</th>
+                        <th>Settings</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var category in Model)
+                    {
+                        <tr>
+                            <td>@category.Id</td>
+                            <td>@category.Name</td>
+                            <td>@category.CreateDate.ToShortDateString()</td>
+                            <td>@category.Products.Count</td>
+                            <td>
+                                <a class="btn btn-secondary" href="/manage/category/updatesub/@category.Id">update</a>
+                                <a class="btn btn-secondary" href="/manage/category/delete/@category.Id">delete</a>
+                                <a class="btn btn-secondary" href="/manage/category/detail/@category.Id">detail</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
